@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "ckeditor",
-    "blog"
+    "blog",
+    "graphene_django",
+    "corsheaders",
+
 ]
 
 MIDDLEWARE = [
@@ -50,6 +53,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware"
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -81,6 +85,12 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
+}
+
+# Configure GraphQL
+
+GRAPHENE = {
+    "SCHEMA": "blog.schema.schema"
 }
 
 
@@ -147,3 +157,7 @@ CKEDITOR_CONFIGS = {
         'width': 800,
     },
 }
+
+CORS_ORIGIN_ALLOW_ALL = False
+# Matches the port that Vue.js is using
+CORS_ORIGIN_WHITELIST = ("http://localhost:5173", )
