@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div class="flex-flex-col place-content-center place-items center">
     <div class="py-8 border-b-2">
       <h1 class="text-5xl font-extrabold">All Categories</h1>
@@ -8,7 +8,7 @@
         v-for="category in Categories"
         :key="category.name"
         class="my-2 mr-5 text-sm font-medium uppercase text-teal-500 hover:underline hover:text-teal-700"
-        :to="/category/${category.slug}"
+        :to="`/category/${category.slug}`"
       >
         {{ category.name }}
       </router-link>
@@ -34,4 +34,4 @@ export default {
     this.allCategories = posts.data.allCategories;
   },
 };
-</script> -->
+</script>

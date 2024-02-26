@@ -15,7 +15,7 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: "/category",
+      path: "/category/:category",
       name: "Category",
       component: CategoryView
     },
@@ -42,6 +42,5 @@ const router = createRouter({
 
   ]
 })
-
 
 export default router

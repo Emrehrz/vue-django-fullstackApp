@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+from django.utils.translation import gettext_lazy as _
 from pathlib import Path
 import os
 
@@ -40,7 +41,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "ckeditor",
     "blog",
+    # graphql kutuphanesi icin
     "graphene_django",
+    # cors fonksiyonelligi ???
     "corsheaders",
 
 ]
@@ -53,7 +56,10 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "corsheaders.middleware.CorsMiddleware"
+    "corsheaders.middleware.CorsMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware"
+    # otamatik dil algilama sistemi
+    # "django.middleware.locale.LocaleMiddleware"
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -90,9 +96,16 @@ DATABASES = {
 # Configure GraphQL
 
 GRAPHENE = {
-    "SCHEMA": "blog.schema.schema"
+    "SCHEMA": "blog.schema.schema",
+    'MIDDLEWARE': [
+        'graphql_jwt.middleware.JSONWebTokenMiddleware',
+    ]
 }
 
+AUTHENTICATION_BACKENDS = [
+    'graphql_jwt.backends.JSONWebTokenBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -124,6 +137,15 @@ USE_I18N = True
 
 USE_TZ = True
 
+USE_L10N = True
+
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
+
+
+LANGUAGES = [
+    ('en', _('English')),
+    ('tr', _("Turkish"))
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/

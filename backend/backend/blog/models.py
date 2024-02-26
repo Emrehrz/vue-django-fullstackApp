@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from ckeditor.fields import RichTextField
+from django.utils.translation import gettext_lazy as _
+
 # Create your models here.
 
 
@@ -10,8 +12,8 @@ class Site(models.Model):
     logo = models.ImageField(upload_to='site/logo')
 
     class Meta:
-        verbose_name = 'site'
-        verbose_name_plural = '1. Site'
+        verbose_name = _('site')
+        verbose_name_plural = _('1. Site')
 
     def __str__(self):
         return self.name
@@ -27,8 +29,8 @@ class User(AbstractUser):
     joined_date = models.DateField(auto_now_add=True)
 
     class Meta:
-        verbose_name = 'user'
-        verbose_name_plural = '2. Users'
+        verbose_name = _('user')
+        verbose_name_plural = _('2. Users')
 
     def __str__(self):
         return self.username
@@ -40,8 +42,8 @@ class Category(models.Model):
     description = models.TextField()
 
     class Meta:
-        verbose_name = 'category'
-        verbose_name_plural = '3. Categories'
+        verbose_name = _('category')
+        verbose_name_plural = _('3. Categories')
 
         def __str__(self):
             return self.name
@@ -53,8 +55,8 @@ class Tag(models.Model):
     description = models.TextField()
 
     class Meta:
-        verbose_name = 'tag'
-        verbose_name_plural = '4. Tags'
+        verbose_name = _('tag')
+        verbose_name_plural = _('4. Tags')
 
     def __str__(self):
         return self.name
@@ -82,8 +84,8 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     class Meta:
-        verbose_name = 'post'
-        verbose_name_plural = '5. Posts'
+        verbose_name = _('post')
+        verbose_name_plural = _('5. Posts')
 
     def __str__(self):
         return self.title
@@ -105,8 +107,8 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
 
     class Meta:
-        verbose_name = 'comment'
-        verbose_name_plural = '6. Comments'
+        verbose_name = _('comment')
+        verbose_name_plural = _('6. Comments')
 
     def __str__(self):
         if len(self.content) > 50:
