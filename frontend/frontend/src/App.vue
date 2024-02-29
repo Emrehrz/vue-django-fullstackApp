@@ -146,7 +146,7 @@
 
 <script>
 import { SITE_INFO } from "@/queries";
-import { useUserStore } from "@/stores/user";
+import { useUserStore } from "@/store/user";
 
 export default {
   setup() {

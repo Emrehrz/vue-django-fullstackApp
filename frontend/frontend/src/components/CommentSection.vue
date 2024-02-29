@@ -48,7 +48,7 @@
 <script>
 import { SUBMIT_COMMENT } from "@/mutations";
 import CommentSingle from "@/components/CommentSingle.vue";
-import { useUserStore } from "@/stores/user";
+import { useUserStore } from "@/store/user";
 
 export default {
   components: { CommentSingle },

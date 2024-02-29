@@ -1,6 +1,6 @@
 <template>
   <div class="mx-auto h-screen w-full sm:w-2/3 md:w-1/3">
-    <form action="POST" @submit.prevent="userSignIn()">
+    <form @submit.prevent="userSignIn()">
       <div class="bg-white rounded-xl w-full">
         <div class="space-y-4">
           <div>
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { useUserStore } from "@/stores/user";
+import { useUserStore } from "@/store/user";
 import { USER_SIGNIN } from "@/mutations";
 
 export default {
@@ -73,6 +73,7 @@ export default {
           password: this.signInDetails.password,
         },
       });
+
       this.userStore.setToken(user.data.tokenAuth.token);
       this.userStore.setUser(user.data.tokenAuth.user);
     },

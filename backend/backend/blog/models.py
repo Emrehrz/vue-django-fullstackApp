@@ -119,3 +119,13 @@ class Comment(models.Model):
 
     def get_number_of_likes(self):
         return self.likes.count()
+
+
+class Comment(models.Model):
+    content = models.TextField(max_length=1000)
+    created_at = models.DateField(auto_now=True)
+    is_approved = models.BooleanField(default=False)
+
+    # Each comment belongs to one user and one post
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    post = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)

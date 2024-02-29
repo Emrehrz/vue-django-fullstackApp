@@ -22,12 +22,12 @@ export default {
   name: "TagsView",
   data() {
     return {
-      allTags: null,
+      allTags: [],
     };
   },
 
   async created() {
-    const posts = await this.$pollo.query({
+    const posts = await this.$apollo.query({
       query: ALL_TAGS,
     });
     this.allTags = posts.data.allTags;

@@ -5,9 +5,10 @@
       A blog created with Django, Vue.js and TailwindCSS
     </p>
 
-    <post-list :posts="this.allPosts"></post-list>
+    <PostList :posts="this.allPosts"></PostList>
   </div>
 </template>
+
 <script>
 import PostList from "@/components/PostList.vue";
 import { ALL_POSTS } from "@/queries";
@@ -18,7 +19,7 @@ export default {
 
   data() {
     return {
-      allPosts: null,
+      allPosts: [],
     };
   },
 
@@ -27,6 +28,7 @@ export default {
       query: ALL_POSTS,
     });
     this.allPosts = posts.data.allPosts;
+    console.log("this.allPosts", this.allPosts);
   },
 };
 </script>

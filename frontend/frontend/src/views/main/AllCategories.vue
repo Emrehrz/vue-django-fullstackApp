@@ -5,7 +5,7 @@
     </div>
     <div class="flex flex-wrap py-8">
       <router-link
-        v-for="category in Categories"
+        v-for="category in allCategories"
         :key="category.name"
         class="my-2 mr-5 text-sm font-medium uppercase text-teal-500 hover:underline hover:text-teal-700"
         :to="`/category/${category.slug}`"
@@ -28,7 +28,7 @@ export default {
   },
 
   async created() {
-    const posts = await this.$pollo.query({
+    const posts = await this.$apollo.query({
       query: ALL_CATEGORIES,
     });
     this.allCategories = posts.data.allCategories;

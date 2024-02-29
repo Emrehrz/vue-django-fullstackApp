@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "blog",
     # graphql kutuphanesi icin
     "graphene_django",
-    # cors fonksiyonelligi ???
+    # cors fonksiyonelligi (CORS, HTTP header'larını kullanarak, bir origin'de (kök, köken) çalışan web uygulamasının veya websitesinin, farklı bir origin'de yer alan web uygulamasına veya websitesine olan erişim izni kontrolünü sağlayan yapıdır. CORS, web tarayıcılar tarafından yönetilmektedir.)
     "corsheaders",
 
 ]

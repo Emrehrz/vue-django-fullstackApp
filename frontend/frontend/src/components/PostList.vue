@@ -59,6 +59,10 @@ export default {
       required: true,
     },
   },
+  created() {
+    console.log("this.posts burasi PostListte", this.posts);
+  },
+
   computed: {
     publishedPosts() {
       return this.posts.filter((post) => post.isPublished);
